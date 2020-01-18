@@ -10,7 +10,6 @@ source /opt/plexguide/menu/functions/install.sh
 
 # KEY VARIABLE RECALL & EXECUTION
 mkdir -p /var/plexguide/zerotier
-rm -rf /var/plexguide/zerotier
 
 # FUNCTIONS START ##############################################################
 # FIRST FUNCTION
