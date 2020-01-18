@@ -45,4 +45,21 @@ From this section you can assign them a name and description and also manually a
 Now we have our ZeroTier account and network ID it is time to install ZeroTier
 
 To install ZeroTier choose PTS-ZeroTier from the menu.
+You will need to know your Network ID.
+set your network ID
+This will restart your Zerotier Docker and Connect to network
+Next Authorise your server in your Zerotier Network
+Document your IP
+Select Setup IP
+Set your Zerotier IP from the network Page
+Deploy ZT
+
+#What did this Do
+Wht this script has done is configured Zerotier and Join it to your Zerotier Network
+With PortGaurd Enabled it blocks access to docker ports this script changes the Docker containers to allow Zerotier Traffic on the ports.
+This does not Open your ports.
+
+Configure DNS + Organizr + Traefik
+Coming Soon
+
 
