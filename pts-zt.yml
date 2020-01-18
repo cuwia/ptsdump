@@ -19,7 +19,7 @@
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/var:/var/lib/zerotier-one'
+          - '/opt/appdata/{{pgrole}}/var:/var/lib/{{pgrole}}'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting {{pgrole}} ENV'
