@@ -1,19 +1,18 @@
 # Zero Tier Guide
-Zerotier is a Vertual network platform that encrypts all trafic end to end, it Allows computers to be connecter to a virtual network controlled Via My Zerotier (Zerotier Hosted) or self hosted,
+Self-Hosted Zerotier is a Virtual Network Platform that providesd end-to-end encryption for all tnetowrk traffics. Allowing computers to be connecter to a virtual network controlled via My Zerotier (Zerotier Hosted) or self-hosted.
 
-With Zerotier and PTS PortGaurd you can create a secure connection to your PTS server, this will allow you to access your server without OATH access and direct access to the servers ports (SSH,Telnet,FTP) this will allow you to close those ports on your public IP firewall thus increaseing your security and ease of conneciton
-
+With Zerotier and PTS PortGuard you can create a secure connection to your PTS server, this will allow you to access your server without OAUTH access and direct access to the servers ports (SSH,Telnet,FTP), minimizing exposure to the public Internet. This will allow you to close those ports on your Public IP firewall, thus increasing your security and enhanced connectivity.
 
 # Getting Started
-To ger started with ZT you will first need to create  my.zerotier account.
+To get started with ZT you will first need to create an account at https://my.zerotier.com/login. 
 
 ## Create a ZeroTier Account
-1. Goto https://www.zerotier.com/
-1. Click Login
-1. click Log in to ZeroTier
-1. Click login in with Google
-1. Authoise google account
-1. Select free account (default)
+1. Go-to https://my.zerotier.com/login.
+1. Click Login.
+1. click Log-In to ZeroTier.
+1. Click Login in with Google.
+1. Authorize Google Account.
+1. Select free account (default).
 
 ## Create a Network (Network ID)
 1. Click Networks
