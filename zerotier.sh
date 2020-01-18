@@ -6,6 +6,27 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
+
+# KEY VARIABLE RECALL & EXECUTION
+mkdir -p /var/plexguide/zerotier
+rm -rf /var/plexguide/zerotier
+
+# FUNCTIONS START ##############################################################
+# FIRST FUNCTION
+doneenter() {
+ echo
+  read -p 'All done | PRESS [ENTER] ' typed </dev/tty
+  question1
+}
+
+deploycheck() {
+  touch /var/plexguide/pgshield.emails
+  efg=$(cat "/var/plexguide/pgshield.emails")
+  if [[ "$efg" == "" ]]; then
+     dstatus="✅ DEPLOYED"
+  else dstatus="⚠️ NOT DEPLOYED"; fi
+}
 
 question1() {
   touch /var/plexguide/zt.network
@@ -24,40 +45,27 @@ question1() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬   Zerotier Must be installed prior from apps
 
-[1] Set Network ID
-[2] Setup IP
-[3] Deploy ZT
+[1] Set Network ID                     [ $idstatus ]
+[2] Setup IP                           [ $ipstatus ]
+[3] Deploy ZT                          [ $dstatus ]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  phase1
-}
-
-phase1() {
-
-  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
+  read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
 
   case $typed in
+
   1) netid && phase1 ;;
   2) setip && phase1 ;;
-  3)
-    # Sanity Check to Ensure Zertoier Installed
-#    touch /var/plexguide/pgshield.emails
-#    efg=$(cat "/var/plexguide/pgshield.emails")
-#    if [[ "$efg" == "" ]]; then
-#      echo
-#      echo "SANITY CHECK: Zerotier is not installed! Exiting!"
-#      read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
-#      question1
-#    fi
+  3) # ansible-playbook /opt/plexguide/menu/pg.yml --tags zerotier && clear && endbanner && question1 ;;
 
     # Sanity Check to Ensure Network ID Set
-#    touch /var/plexguide/zerotier.ports
+    # touch /var/plexguide/zerotier.ports
     touch /var/plexguide/ztNet.id
-    ztnetid=$(cat "/var/plexguide/ztNet.id")
+    ztnetid=$(cat "/var/plexguide/ztnet.id")
     if [ "$ztnetid" != "" ]; then
       echo
       echo "SANITY CHECK: Network ID is not set, PTS-ZeroTier cannot be enabled until this is set"
