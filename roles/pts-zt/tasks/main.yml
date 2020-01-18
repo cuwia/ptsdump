@@ -1,0 +1,11 @@
+- name: Server Domain
+  shell: 'cat /var/plexguide/server.domain'
+  register: domain
+
+- name: Zerotier Network ID
+  shell: 'cat /var/plexguide/ztnet.id'
+  register: ztnetid
+  
+- name: Zerotier IP
+  shell: 'cat /var/plexguide/ztnet.id'
+  register: ztnetid
