@@ -1,7 +1,7 @@
 # Zero Tier Guide
-Self-Hosted Zerotier is a Virtual Network Platform that providesd end-to-end encryption for all tnetowrk traffics. Allowing computers to be connecter to a virtual network controlled via My Zerotier (Zerotier Hosted) or self-hosted.
+Zerotier is a Self-Hosted Virtual Network Platform that provides end-to-end encryption for all network traffic. Allowing computers to be connected to a virtual network controlled via My Zerotier (Zerotier Hosted) or self-hosted.
 
-With Zerotier and PTS PortGuard you can create a secure connection to your PTS server, this will allow you to access your server without OAUTH access and direct access to the servers ports (SSH,Telnet,FTP), minimizing exposure to the public Internet. This will allow you to close those ports on your Public IP firewall, thus increasing your security and enhanced connectivity.
+With Zerotier and PTS PortGuard you can create a secure connection to your PTS server, this will allow you to access your server without OAUTH access and direct access to the servers ports (SSH, Telnet, FTP, etc.), minimizing exposure to the public Internet. This will allow you to close those ports on your Public IP firewall, thus increasing your security and enhanced connectivity.
 
 # Getting Started
 To get started with ZT you will first need to create an account at https://my.zerotier.com/login. 
