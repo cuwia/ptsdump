@@ -48,10 +48,15 @@ To install ZeroTier, choose PTS-ZeroTier from the menu.
 (1) Set your network ID
 
 Note: This will restart your Zerotier Docker and Connect to your Network
+
 (2) Next authorize your server in your Zerotier Network
+
 (3) Document your IP
+
 (4) Select Setup IP
+
 (5) Set your Zerotier IP from the Network Page
+
 (6) Deploy ZeroTier
 
 # What did this Do
