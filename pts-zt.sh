@@ -1,18 +1,51 @@
 #!/bin/bash
 #
-# Title:      PGBlitz (Reference Title File)
-# Author(s):  Admin9705 - Deiteq
-# URL:        https://pgblitz.com - http://github.pgblitz.com
+# Title:      Zerotier Installer
+# Author(s):  Cuwia
+# URL:        
 # GNU:        General Public License v3.0
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
+
+# KEY VARIABLE RECALL & EXECUTION
+folder=/var/lib/zerotier-one
+if [[ "$folder" != "/var/lib/zerotier-one" ]]; then
+mkdir -p "$folder" 
+else runs2; fi
+
+runs2() {
+folder=/var/lib/zerotier-one
+rm -rf "$folder" && mkdir -p "$folder"
+}
+
+# FUNCTIONS START ##############################################################
+# FIRST FUNCTION
+doneenter() {
+ echo
+  read -p 'All done | PRESS [ENTER] ' typed </dev/tty
+  question1
+}
+badinput() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
+  clear && question1
+}
+dontwork() {
+ echo
+  read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+  clear && question1
+}
+deploycheck() {
+  touch /var/plexguide/pgshield.emails
+  efg=$(cat "/var/plexguide/pgshield.emails")
+  if [[ "$efg" == "" ]]; then
+     dstatus="✅ DEPLOYED"
+  else dstatus="⚠️ PTS-SHIELD MISSING"; fi
+}
 
 question1() {
   
-  mkdir -p /var/plexguide/auth/
-  mkdir -p /var/lib/zerotier-one
-  domain=$(cat /var/plexguide/server.domain)
-
   tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🛡️  PTS-ZeroTier 
@@ -24,11 +57,6 @@ question1() {
 [Z] Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  phase1
-}
-
-phase1() {
-
   read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
   case $typed in
@@ -84,7 +112,7 @@ if [ -n "$NW_ID" ]; then
     while [ -z "$(docker exec zerotier-one zerotier-cli listnetworks | grep $NW_ID | grep OK)" ]; do echo "wait for auth";sleep 1 ; done
     MYIP=$(docker exec zerotier-one zerotier-cli listnetworks | grep $NW_ID |grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' )
     echo "Success! IP: ${MYIP}"
-
+    echo "${MYIP}:" > /var/plexguide/ZT.IP
  fi
    
         ;;
