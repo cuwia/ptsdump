@@ -70,13 +70,13 @@ if [ -n "$NW_ID" ]; then
         while [ -z "$(docker exec zerotier-one zerotier-cli listnetworks | grep $NW_ID | grep ACCESS_DENIED)" ]; do echo "wait for connect"; sleep 1 ; done
     fi
     
-    if [ -n "$NW_TOKEN" ]; then
+    if [ -n "$API_TOKEN" ]; then
       if [ -n "$(docker exec zerotier-one zerotier-cli listnetworks | grep $NW_ID | grep ACCESS_DENIED)" ]; then
-        echo "Found ENV: NW_TOKEN, will auto auth myself ..."
+        echo "Found ENV: API_TOKEN, will auto auth myself ..."
         MYURL=https://my.zerotier.com/api/network/${NW_ID}/member/$MYID
-        wget --header "Authorization: Bearer ${NW_TOKEN}" "${MYURL}" -q -O /tmp/ztinfo.txt
+        wget --header "Authorization: Bearer ${API_TOKEN}" "${MYURL}" -q -O /tmp/ztinfo.txt
         sed 's/"authorized":false/"authorized":true/' /tmp/ztinfo.txt > /tmp/ztright.txt
-        wget --header "Authorization: Bearer ${NW_TOKEN}" --post-data="$(cat /tmp/ztright.txt)" -q -O- "${MYURL}"
+        wget --header "Authorization: Bearer ${API_TOKEN}" --post-data="$(cat /tmp/ztright.txt)" -q -O- "${MYURL}"
         rm /tmp/ztinfo.txt && rm /tmp/ztright.txt
       fi
     fi
